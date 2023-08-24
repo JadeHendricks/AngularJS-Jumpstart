@@ -23,3 +23,51 @@ What is a controller?
 - Controllers act as the "brain" for a view : Retrieve data from a factory/service and store it.
 - They typically interact with a service/factory
 - The by using the scope they can then bind that data into the view using directives defined in the view
+
+What can directives do?
+- DOM manipulation
+- Data binding
+- Reference modules and controllers
+- Handle events
+- Modify css
+- Control where views will be loaded in the shell page
+- ETC
+
+DOM
+- ng-hide, ng-show
+- ng-repeat, ng-switch (ng-switch on="data.loggedIn", ng-switch-when="true", ng-switch-default)
+- ng-view (where a given view loads in the shell page)
+- ng-cloak (sets the container to display none - or just load scripts at the bottom of the page)
+
+Modules/Comntrollers
+- ng-app
+- ng-controller (associating a controller with a view)
+
+Data binding
+- ng-bind (can be used like this - ng-bind="name" instead of {{ name }} if you so choose.)
+- ng-init (initialize your properties with inital values)
+- ng-model
+
+events
+- ng-click
+- ng-keypress
+- ng-mouseenter
+
+Defining directives in different ways- 
+- <div ng-hide="isHidden">
+- <div data-ng-hide="isHidden">
+- <ng-view></ng-view>
+
+Filters -
+- AngularJS can "pipe" data through filtering, formatting and sorting functions
+- Uses the character |
+
+List of key filters -
+- currency
+- date (can be used to format dates into a format of your liking)
+- filter (filter: whatToFilter)
+- json (output data as raw json, usefull in debugging scenarios)
+- limitTo (can limit things, for example limit an array to only show 4 items even if it has more)
+- lowercase, uppercase
+- number
+- orderBy (allows us to order our data based on a property : eg - cust in cusomters | orderBy: 'name')

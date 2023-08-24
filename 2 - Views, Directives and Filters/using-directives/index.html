@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" ng-app>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AngularJS - Using Directives</title>
+</head>
+<body ng-init="name='James'">
+    <div ng-hide="isHidden">
+        <label for="name">Name:</label>
+        <input type="text" name="name" placeholder="Enter name" ng-model="name"/> {{ name }}
+    </div>
+    <div>
+        <label for="hide">Hide:</label>
+        <input type="checkbox" name="hide" ng-model="isHidden">
+    </div>
+    <div>
+        <button ng-click="name='Michelle'">Change Name</button>
+    </div>
+    <script src="../../angular.js"></script>
+</body>
+</html>
