@@ -1,0 +1,25 @@
+Modules - 
+- Are containers that allow components, directives, factories that you build for you app have a way to be organised into one container
+
+Routes -
+- Determines what routes/view gets loaded (path)
+
+Views - 
+- Within views, we can have directives, which enhance HTML
+- We can have something called filters (they proved some data filtering functionality and can do simple things like uppercase data, lowercase data and more)
+
+Logic/data
+- Controller (brain for our views and get data or perform business rules against factories or services) - data is shared from the controller to the view via something called $scope
+- Factories
+- Services
+
+What are factories/services?
+- used to make restful calls
+- Used to share data between controllers
+- Used to ahndle custom Logic
+- The are singletons
+
+What is a controller?
+- Controllers act as the "brain" for a view : Retrieve data from a factory/service and store it.
+- They typically interact with a service/factory
+- The by using the scope they can then bind that data into the view using directives defined in the view
