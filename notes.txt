@@ -1,5 +1,8 @@
 Modules - 
-- Are containers that allow components, directives, factories that you build for you app have a way to be organised into one container
+- Are containers that allow components, directives, factories, routes, filters that you build for you app have a way to be organised into one container
+- Defining a module = var demoApp = angular.module('demoApp', []);
+- The array used as a second argument is for dependencies, you module might reference other modules for an example. Eg:- var demoApp = angular.module('demoApp', [helperModule]);
+- This is injecting another module into your module and gives us access to that modules features and functionality.
 
 Routes -
 - Determines what routes/view gets loaded (path)
@@ -71,3 +74,21 @@ List of key filters -
 - lowercase, uppercase
 - number
 - orderBy (allows us to order our data based on a property : eg - cust in cusomters | orderBy: 'name')
+
+AngularJS Controllers
+- Define properties and emthods
+- Handles showing/Hiding controls and  data in the view
+- Handles events triggered by a view
+- Knows how to retrieve data
+- Interacts with the view using the $scope object
+
+The role of $scope
+- $scope is a keyword that AngularJS understands out the box
+- $scope is "injected" into a controller
+- Acts as athe ViewModel
+- Views bind to scope properties and functions
+
+Using "Controller AS"
+- When using controll as, you need to reference it in the ng-controller in the template = "CustomerController as ctrl"
+- The controller then would need to use "this" instead of $scope
+- You can then access the items like this - cust in ctrl.customers inside of the template
