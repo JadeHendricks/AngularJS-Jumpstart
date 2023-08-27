@@ -92,3 +92,45 @@ Using "Controller AS"
 - When using controll as, you need to reference it in the ng-controller in the template = "CustomerController as ctrl"
 - The controller then would need to use "this" instead of $scope
 - You can then access the items like this - cust in ctrl.customers inside of the template
+
+Factories and Services
+- Includes serveral built-in factories/services
+- They are singletons that perfom re-useable tasks: (Ajax calls, Business rules, Calculations, Share data between controllers)
+- You can create your own factories/services with modules
+
+AngularJS built in services (a few of them)
+- $http - HTTP calls
+- $timout - Can be used in a similar was as window.timeOut()
+- $window - Gives you access to the window object
+- $location - Will get you access to the URL (#, HOST) etc
+- $q - Used with Asynchronous processes like ajax calls and others
+- $rootScope - Used behind the scences to actually make new scopes
+- $ interval - a reapeating interval you could use
+- $filter
+- $log
+
+What is a factory?
+- Define reusable tasks
+- Share code or state between controllers
+- Create and return a custom object
+- Created using the module.factory() function
+- Can be injected into other components
+- Can have dependencies
+- Adding a factory to a module - (angular.module('customersApp').factory("customersFactory", customersFactory))
+- Injecting a factory into a controller - (var CustomersController = function($scope, customersFactory)) -  as long as it is registered with our module the controller exists in.
+
+What is a service?
+- Very similar to a factory
+- Service function represents the returned object as opposed to a custom object like in a factory
+- Created using the module.service() function
+- Can be injected into other components
+- Can have dependencies
+
+Value and Constant
+- A value can be created using module.value(key, value); - angular.module("customersApp").value("version", "1.0")
+- Allows you to provide a centeralized area to put strings and other types of objects
+- Can't be injected into the config() function that wraps our routes
+- angular.module('customersApp').value('appSettings', { title: 'Customers Application', version: '1.0'});
+- A constant can be created using module.constant(key, value); - angular.module("customersApp").constant("version", "1.0")
+- It's the same as a value, but this can be injected into the config() method in order to get it earlier in the life cycle
+- Angular.module('customersApp').constant('appSettings', { title: 'Customers Application', version: '1.0'});
