@@ -171,3 +171,46 @@ angular.module('moduleName').directive('myDirective', function() {
         link: function(scope, element, attrs) {} (links our directive into the dom and we can get access to the scope, the element where the directive is and the attributes that are on that element)
     }
 })
+
+Understand Shared and Isloated scope
+- Shared scope is shared from parent to child or from controller to directive
+- Isloated scope is isolated from it's parent and only lives in the directive (inside of the DDO scope property) and cannot be accessed like this (<div isolated-scope></div>)
+- scope: {} is what sets up the isolated scope inside of the DDO
+
+How to punch a hole in the isolated scopes wall
+- There are 3 symbols (@ = &) and using these values allows us to get through the wall (like a pipeline through the wall)
+- (@) - represents a string value that is allowed to be passed to a isolated scope eg:-
+
+$scope.first='Dave'
+<my-directive name="{{first}}" />
+scope: {name: '@'}
+
+- You can also set what the name of the data needs to be like this - '@fullname' == fullname '@fullName' == full-name on the outside if you want.
+- (=) - Two way type of binding we can do, we can punch a hole through the isolate scope with = aswell
+- So if the value passed to the directive changes, the change will happen outside and inside of the directive.
+- You can pass strings or objects eg:-
+
+$scope.person = { name: 'DAVE' };
+<my-directive customer="person" /> (no need for {{}} as this accepts objects)
+scope: { customer: '=' }
+
+- (&) - Allows us to pass in a function/expression that we could then store in our isolated scope, then we can invoke that function if something happens
+- The function itself gets passed in, the action is an alias for the function eg:-
+
+$scope.click = function() {};
+<my-directive action="click()" />
+scope: {action: '&'}
+
+The link function - 
+- The link function is all about DOM manipulation
+- This function links the template for the directive to the scope (links the data to the view)
+- It looks like this - inside of the DDO - link: function(scope, element, attrs) {}
+- Scope - the scope can either be shared or isolated, depending on how you set up your directive.
+- Element - is the element the that the directive is current on, or is could be the element
+- Attr - all the attributes on the element
+
+jqLite
+- It's a tine API compatible subset of jQuery that allows Angular to manipulate the DOM.
+- If you install JQuery yourself, it will use the full version of JQuery instead, but it's generally not needed.
+- angular.element() - to get to the actually element we want to work with
+- addClass(), css(), attr(), on(), off(), find(), append(), remove(), html(), text(), ready() (you don't ahve to use these)
