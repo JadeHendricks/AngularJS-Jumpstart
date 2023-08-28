@@ -134,3 +134,40 @@ Value and Constant
 - A constant can be created using module.constant(key, value); - angular.module("customersApp").constant("version", "1.0")
 - It's the same as a value, but this can be injected into the config() method in order to get it earlier in the life cycle
 - Angular.module('customersApp').constant('appSettings', { title: 'Customers Application', version: '1.0'});
+
+What are directives?
+- Directives teach HTML new tricks
+- Markers on a DOM element that tells AngularJS's html compler ($compile) to attach specified behaviour to that DOM element. (<div my-directive></div>)
+- They can manipulate the DOM, Modify CSS, Iterate through data, validate data, handle events and assist with data binding
+- You define a directive like this - angular.module('moduleName').directive('simpleDirective', function(){}); = (<div simple-directive></div>)
+
+Directive categories - 
+- Dom-driven Directives - All about DOM manipulation
+- Behaviour-driven Directives - All about handling DOM events
+- Data-Driven Directives - All about data, using other directives and a controller
+
+3rd party AngularJS directives
+- UI Bootstrap
+- AngularStrap
+- Angular UI Grid
+
+Directive Definition Object (DDO)
+- $complie provider relies on a directive definition object (DDO)
+- Defines the template for the directive
+- Can define a controller for the directive
+- Controls the directives scope
+- Defines how the directive can be used
+
+Key DDO properties
+- restrict, template, templateUrl, scope, controller, link
+- eg:- 
+
+angular.module('moduleName').directive('myDirective', function() {
+    return {
+        restrict: 'EA', (Element or Attribute)
+        scope: {}, (Isloated Scope)
+        template: '<div>{{ myVal }}</div>',
+        controller: controller,
+        link: function(scope, element, attrs) {} (links our directive into the dom and we can get access to the scope, the element where the directive is and the attributes that are on that element)
+    }
+})
