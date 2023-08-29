@@ -214,3 +214,25 @@ jqLite
 - If you install JQuery yourself, it will use the full version of JQuery instead, but it's generally not needed.
 - angular.element() - to get to the actually element we want to work with
 - addClass(), css(), attr(), on(), off(), find(), append(), remove(), html(), text(), ready() (you don't ahve to use these)
+
+scope.$watchCollection()
+- Allows us to watch a collection if there are any changes
+- If there is a change to the collection this can then call a callback function
+- The way you see that it has changed would be to use "=" to create a two way bind in isolated scope.
+
+How to use the $eval property and $parse
+- It is $eval accessed via the scope
+- Eg:- scope.$eval(attrs.columnmap) - under the covers $eval calls $parse for you
+- $parse needs to be injected into the function
+- Eg:- var tableHlperWithParse = ['$parse', function($parse) {}]
+- Parse returns a function, so when you use $parse you then need to invoke it to return the value to a variable
+- Eg:- var test = $parse(attrs.columnmap)();
+- These two convert strings to objects
+
+Using $compile method
+- The compile function is closely related to the link function and for the most part it's mostly hidden away from us
+- The compile functions responsibility is to really access the raw template and store it once.
+- So now if the directive is used 50 times. Instead of creating new objects over and over it will share it's instance with all of them.
+- Once compile gets the template, right before the link function is called, there is something that gets called, called the pre-link (not really needed)
+- The last thing that gets called is the post-link (which is actually the link function)
+- So in short directives rely on the $compile service behind the scenes which provices the pre and post link functions
