@@ -236,3 +236,22 @@ Using $compile method
 - Once compile gets the template, right before the link function is called, there is something that gets called, called the pre-link (not really needed)
 - The last thing that gets called is the post-link (which is actually the link function)
 - So in short directives rely on the $compile service behind the scenes which provices the pre and post link functions
+
+Using a controller in a directive
+- In order to add a controller to a directive, what you need to do is add it to the DDO
+- Eg:- { restrict: 'EA', scope: {}, controller: function($scope) {} }
+
+What is transclusion?
+- Inclusion of a document or part of a document into another document by reference. (like including a footer into the main document) like and ngViewn gTemplate in Angular
+- Type of an include/wrapping of some functionality
+- ng-transclude is basically an X marks the spot, as in where d you want the content to go.
+- To use transclude you need to add it to the DDO - transclude: true (aka child content) and this gives us access to the transclue method inside of the link function
+- Eg:-
+
+<div class="containter" ng-transclude>
+    Content provided by consumer of directive
+</div>
+
+or
+
+<ng-transclude></ng-transclude>
